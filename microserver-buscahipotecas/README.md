@@ -49,3 +49,5 @@ http://localhost:8080/hello
 
 Swagger:
 http://localhost:8080/doc/swagger-ui/index.html
+
+## Mysql Config
