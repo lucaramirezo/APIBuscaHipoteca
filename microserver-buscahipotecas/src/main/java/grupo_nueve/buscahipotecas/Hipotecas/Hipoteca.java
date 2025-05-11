@@ -1,5 +1,6 @@
 package grupo_nueve.buscahipotecas.Hipotecas;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.PrePersist;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -42,8 +44,25 @@ public class Hipoteca {
 
     @Column(nullable = false)
     int id_entidad;
+
+    // Time status.
+    @Column(nullable = false)
+    LocalDateTime create_at;
+
+    @Column(nullable = false)
+    LocalDateTime updated_at;
+
+    @Column(nullable = true)
+    LocalDateTime deleted_at;
+
+    @PrePersist
+    public void prePersist() {
+        this.create_at = LocalDateTime.now();
+        this.updated_at = LocalDateTime.now();
+    } // Se ejecuta antes de persistir el objeto en la base de datos. Se le asigna la fecha y hora actual a create_at.
     
     
+    // Realtions
     @ManyToMany(mappedBy = "hipotecas")
     @Builder.Default
     private Set<Usuario> usuarios = new HashSet<>();

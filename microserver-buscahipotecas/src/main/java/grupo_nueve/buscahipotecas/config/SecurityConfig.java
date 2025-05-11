@@ -48,7 +48,7 @@ public class SecurityConfig {
         @Bean
         public CorsConfigurationSource corsConfigurationSource() {
                 CorsConfiguration config = new CorsConfiguration();
-                config.setAllowedOrigins(List.of("http://localhost:8081")); // Permitir frontend en 8081
+                config.setAllowedOrigins(List.of("http://localhost:8080")); // Permitir frontend en 8081
                 config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
                 config.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
                 config.setAllowCredentials(true); // Permitir cookies y tokens

@@ -22,7 +22,12 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
 
     public AuthResponse login(LoginRequest request) {
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
+        try {
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Invalid username or password");
+        }
+
         UserDetails usuario_details=usuarioRepository.findByUsername(request.getEmail()).orElseThrow();
         
         String token=jwtServie.getToken(usuario_details);
