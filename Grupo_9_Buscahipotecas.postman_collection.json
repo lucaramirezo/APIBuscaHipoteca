@@ -1,0 +1,737 @@
+{
+	"info": {
+		"_postman_id": "49a4d6cf-2550-413c-992d-0718b5973a2a",
+		"name": "Grupo_9_Buscahipotecas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5910793"
+	},
+	"item": [
+		{
+			"name": "auth/register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"alejandro.ruiz.pruebas2@gmail.com\",\n    \"password\": \"prueba12345\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/buscahipotecas/v1/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"buscahipotecas",
+						"v1",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth/register (BAD USER)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"BAD_alejandro.ruiz.pruebas2@gmail.com\",\n    \"password\": \"BAF_prueba12345\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/buscahipotecas/v1/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"buscahipotecas",
+						"v1",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth/test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/buscahipotecas/v1/auth/test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"buscahipotecas",
+						"v1",
+						"auth",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth/test_v2",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"value\": \"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/buscahipotecas/v1/auth/test_v2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"buscahipotecas",
+						"v1",
+						"auth",
+						"test_v2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth/login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"alejandro.ruiz.pruebas2@gmail.com\",\n    \"email\": \"alejandro.ruiz.pruebas2@gmail.com\",\n    \"password\": \"prueba12345\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/buscahipotecas/v1/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"buscahipotecas",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "demo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGVqYW5kcm8ucnVpei5wcnVlYmFzQGdtYWlsLmNvbSIsImlhdCI6MTczNzg5NTQ2OSwiZXhwIjoxNzM3ODk2OTA5fQ.OjnhdU3nprvK1kmdKRUPBTlQSHfn1pVEYrnVYLMwX88",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/buscahipotecas/v1/demo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"buscahipotecas",
+						"v1",
+						"demo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "usuario/all",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGVqYW5kcm8ucnVpei5wcnVlYmFzQGdtYWlsLmNvbSIsImlhdCI6MTczNzg5NTQ2OSwiZXhwIjoxNzM3ODk2OTA5fQ.OjnhdU3nprvK1kmdKRUPBTlQSHfn1pVEYrnVYLMwX88",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/buscahipotecas/v1/usuario/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"buscahipotecas",
+						"v1",
+						"usuario",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "usuario/{id_usuario}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGVqYW5kcm8ucnVpei5wcnVlYmFzQGdtYWlsLmNvbSIsImlhdCI6MTczNzg5NDgyOCwiZXhwIjoxNzM3ODk2MjY4fQ.KJtxyemE6KjT1C1i0CZuEts-ORxJNEcbrswGT02nhSo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/buscahipotecas/v1/usuario/get/8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"buscahipotecas",
+						"v1",
+						"usuario",
+						"get",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "usuario/update/{id_usuario}",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGVqYW5kcm8ucnVpei5wcnVlYmFzQGdtYWlsLmNvbSIsImlhdCI6MTczNzgzMjIzNSwiZXhwIjoxNzM3ODMzNjc1fQ.b6BOXudQyRZ5ZHK-hTiZbp3x2ObMtjQ17SUfpKTGCcQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"alejandro.ruiz.pruebas@gmail.com\",\n    \"password\": \"prueba1234\",\n    \"username\": \"alejandro.ruiz.pruebas@gmail.com\",\n    \"role\": \"ADMIN\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/buscahipotecas/v1/usuario/update/13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"buscahipotecas",
+						"v1",
+						"usuario",
+						"update",
+						"13"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "usuario/delete/{id_usuario}",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGVqYW5kcm8ucnVpei5wcnVlYmFzQGdtYWlsLmNvbSIsImlhdCI6MTczNzgzMzc5NCwiZXhwIjoxNzM3ODM1MjM0fQ.cyYF3gIeHa-6boW-zwc1u_oOJEl4YzFkNecAKQDVOBM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/buscahipotecas/v1/usuario/delete/12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"buscahipotecas",
+						"v1",
+						"usuario",
+						"delete",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "hipoteca/all",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGVqYW5kcm8ucnVpei5wcnVlYmFzQGdtYWlsLmNvbSIsImlhdCI6MTczODQ4OTQyMCwiZXhwIjoxNzM4NDkwODYwfQ.yBpn_n2SV1JfjKKDSdWc84wSFWcviQ8mvRCbJskiyBY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/buscahipotecas/v1/hipoteca/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"buscahipotecas",
+						"v1",
+						"hipoteca",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "hipoteca/create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGVqYW5kcm8ucnVpei5wcnVlYmFzMkBnbWFpbC5jb20iLCJpYXQiOjE3NDY5ODgwMTcsImV4cCI6MTc0Njk4OTQ1N30.gBOrq9R5R84ePstmuzfxawTgjIcfkrJD8T0M5WKZ5nw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre_hipoteca\": \"BBVA\",\n    \"importe_inicial\": 200000,\n    \"mensualidad\": 687,\n    \"tipo_hipoteca\": \"mixta\",\n    \"finalidad\": \"primera vivienda\",\n    \"id_entidad\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/buscahipotecas/v1/hipoteca/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"buscahipotecas",
+						"v1",
+						"hipoteca",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "hipoteca/update/{id_hipoteca}",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGVqYW5kcm8ucnVpei5wcnVlYmFzQGdtYWlsLmNvbSIsImlhdCI6MTczNzgzMjIzNSwiZXhwIjoxNzM3ODMzNjc1fQ.b6BOXudQyRZ5ZHK-hTiZbp3x2ObMtjQ17SUfpKTGCcQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre_hipoteca\": \"BBVA\",\n    \"importe_inicial\": 200000,\n    \"mensualidad\": 687,\n    \"tipo_hipoteca\": \"mixta\",\n    \"finalidad\": \"primera vivienda\",\n    \"id_entidad\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/buscahipotecas/v1/hipoteca/update/13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"buscahipotecas",
+						"v1",
+						"hipoteca",
+						"update",
+						"13"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "hipoteca/delete/{id_hipoteca}",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGVqYW5kcm8ucnVpei5wcnVlYmFzQGdtYWlsLmNvbSIsImlhdCI6MTczNzgzMzc5NCwiZXhwIjoxNzM3ODM1MjM0fQ.cyYF3gIeHa-6boW-zwc1u_oOJEl4YzFkNecAKQDVOBM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/buscahipotecas/v1/hipoteca/delete/12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"buscahipotecas",
+						"v1",
+						"hipoteca",
+						"delete",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "banco/all",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGVqYW5kcm8ucnVpei5wcnVlYmFzQGdtYWlsLmNvbSIsImlhdCI6MTczNzczNjcwOSwiZXhwIjoxNzM3NzM4MTQ5fQ.V6Seeu-ssK5UPIwiR27JaBFg6vj_bikpHS3rAS_Ijok",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/buscahipotecas/v1/banco/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"buscahipotecas",
+						"v1",
+						"banco",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "banco/create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGVqYW5kcm8ucnVpei5wcnVlYmFzMkBnbWFpbC5jb20iLCJpYXQiOjE3NDY5ODgwMTcsImV4cCI6MTc0Njk4OTQ1N30.gBOrq9R5R84ePstmuzfxawTgjIcfkrJD8T0M5WKZ5nw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre_banco\": \"BBVA\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/buscahipotecas/v1/banco/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"buscahipotecas",
+						"v1",
+						"banco",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "bancoi/update/{id_banco}",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGVqYW5kcm8ucnVpei5wcnVlYmFzQGdtYWlsLmNvbSIsImlhdCI6MTczNzgzMjIzNSwiZXhwIjoxNzM3ODMzNjc1fQ.b6BOXudQyRZ5ZHK-hTiZbp3x2ObMtjQ17SUfpKTGCcQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre_hipoteca\": \"BBVA\",\n    \"importe_inicial\": 200000,\n    \"mensualidad\": 687,\n    \"tipo_hipoteca\": \"mixta\",\n    \"finalidad\": \"primera vivienda\",\n    \"id_entidad\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/buscahipotecas/v1/banco/update/13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"buscahipotecas",
+						"v1",
+						"banco",
+						"update",
+						"13"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "banco/delete/{id_banco}",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGVqYW5kcm8ucnVpei5wcnVlYmFzQGdtYWlsLmNvbSIsImlhdCI6MTczNzgzMzc5NCwiZXhwIjoxNzM3ODM1MjM0fQ.cyYF3gIeHa-6boW-zwc1u_oOJEl4YzFkNecAKQDVOBM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/buscahipotecas/v1/banco/delete/12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"buscahipotecas",
+						"v1",
+						"banco",
+						"delete",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "setHipotecas/{id_usuario}",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGVqYW5kcm8ucnVpei5wcnVlYmFzMkBnbWFpbC5jb20iLCJpYXQiOjE3NDY5ODk2NzQsImV4cCI6MTc0Njk5MTExNH0.LZjzcmAjJlPQaj776eLSQ-x7i-nolgPfYeXcmuxNRI8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[1]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/buscahipotecas/v1/usuario/setHipotecas/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"buscahipotecas",
+						"v1",
+						"usuario",
+						"setHipotecas",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
