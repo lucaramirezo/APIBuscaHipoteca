@@ -1,12 +1,14 @@
 package grupo_nueve.buscahipotecas.Usuarios;
 
 import java.util.List;
+import java.util.Set;
 import java.util.HashSet;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import grupo_nueve.buscahipotecas.Hipotecas.Hipoteca;
+import grupo_nueve.buscahipotecas.Hipotecas.HipotecaRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -57,14 +59,20 @@ public class UsuarioService {
         usuarioRepository.delete(usuarioToDelete);
     }
 
-    public Usuario setHipotecas(int id_usuario, List<Hipoteca> hipotecas) {
+    public Usuario setHipotecas(int id_usuario, List<Integer> ids_hipotecas) {
         
         Usuario usuario = usuarioRepository.findById(id_usuario).orElse(null);
         
         if (usuario == null) {
             throw new IllegalArgumentException("Usuario not found");
         }
-        usuario.setHipotecas(new HashSet<>(hipotecas));
+
+        // usuario.setHipotecas(new HashSet<>(hipotecas));
+        Set<Hipoteca> hipotecas = new HashSet<>(HipotecaRepository.findAllById(ids_hipotecas));
+        // ToDo... Continuar
+
+        usuario.setHipotecas(hipotecas);
+
         return usuarioRepository.save(usuario);
     }
 

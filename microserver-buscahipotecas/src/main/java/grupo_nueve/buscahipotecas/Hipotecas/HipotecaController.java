@@ -31,6 +31,12 @@ public class HipotecaController {
         return hipotecaService.getAll();
     }
 
+    @GetMapping("/all/{id_usuario}")
+    public List<Hipoteca> allByIdUsuario(@PathVariable int id_usuario)
+    {
+        return hipotecaService.getAllByIdUsuario(id_usuario);
+    }
+
     @PostMapping("/update/{id_hipoteca}")
     public ResponseEntity<Hipoteca> updateHipoteca(@PathVariable int id_hipoteca, @RequestBody Hipoteca hipoteca) {
         if (id_hipoteca <= 0) {

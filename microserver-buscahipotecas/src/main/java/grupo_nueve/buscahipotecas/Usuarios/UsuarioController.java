@@ -59,11 +59,17 @@ public class UsuarioController {
     }
 
     @PostMapping("/setHipotecas/{id_usuario}")
-    public ResponseEntity<Usuario> setHipotecas(@PathVariable int id_usuario, @RequestBody List<Hipoteca> hipotecas) {
+    public ResponseEntity<Usuario> setHipotecas(@PathVariable int id_usuario, @RequestBody List<Integer> ids_hipotecas) {
+        String test = "test";
         if (id_usuario <= 0) {
             throw new IllegalArgumentException("Invalid id_usuario");
         }
-        Usuario usuario = usuarioService.setHipotecas(id_usuario, hipotecas);
+
+        if (ids_hipotecas == null || ids_hipotecas.isEmpty()) {
+            throw new IllegalArgumentException("Invalid ids_hipotecas");
+        }
+        Usuario usuario = usuarioService.setHipotecas(id_usuario, ids_hipotecas);
+        
         return ResponseEntity.ok(usuario);
     }
 }

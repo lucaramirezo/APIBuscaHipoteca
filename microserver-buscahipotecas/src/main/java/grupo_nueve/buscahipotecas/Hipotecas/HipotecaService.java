@@ -2,6 +2,8 @@ package grupo_nueve.buscahipotecas.Hipotecas;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
+
+import grupo_nueve.buscahipotecas.Usuarios.Usuario;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -16,6 +18,10 @@ public class HipotecaService {
 
     public List<Hipoteca> getAll() {
         return hipotecaRepository.findAll();
+    }
+
+    public List<Hipoteca> getAllByIdUsuario(int id_usuario) {
+        return hipotecaRepository.findByIdUsuario(id_usuario);
     }
 
     public Hipoteca update(int id_hipoteca, Hipoteca hipoteca) {
