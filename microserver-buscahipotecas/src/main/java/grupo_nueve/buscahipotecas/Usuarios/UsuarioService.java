@@ -17,6 +17,8 @@ public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository; // Inyeccion de dependencia.
     private final PasswordEncoder passwordEncoder;
+    private final HipotecaRepository HipotecaRepository;
+
 
     public void create (Usuario usuario)
     {

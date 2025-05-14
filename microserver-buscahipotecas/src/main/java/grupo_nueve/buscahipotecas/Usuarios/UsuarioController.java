@@ -2,7 +2,6 @@ package grupo_nueve.buscahipotecas.Usuarios;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import grupo_nueve.buscahipotecas.Hipotecas.Hipoteca;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -60,7 +59,6 @@ public class UsuarioController {
 
     @PostMapping("/setHipotecas/{id_usuario}")
     public ResponseEntity<Usuario> setHipotecas(@PathVariable int id_usuario, @RequestBody List<Integer> ids_hipotecas) {
-        String test = "test";
         if (id_usuario <= 0) {
             throw new IllegalArgumentException("Invalid id_usuario");
         }

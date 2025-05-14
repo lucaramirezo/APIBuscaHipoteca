@@ -13,7 +13,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import grupo_nueve.buscahipotecas.Creditos.Credito;
 import grupo_nueve.buscahipotecas.Hipotecas.Hipoteca;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
