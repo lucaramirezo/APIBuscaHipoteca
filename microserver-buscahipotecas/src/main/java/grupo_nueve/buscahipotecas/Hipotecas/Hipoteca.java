@@ -1,7 +1,6 @@
 package grupo_nueve.buscahipotecas.Hipotecas;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
 import java.util.Set;
 
 import grupo_nueve.buscahipotecas.Usuarios.Usuario;
@@ -64,8 +63,7 @@ public class Hipoteca {
     
     // Realtions
     @ManyToMany(mappedBy = "hipotecas")
-    @Builder.Default
-    private Set<Usuario> usuarios = new HashSet<>();
+    private Set<Usuario> usuarios;
 
 
 }

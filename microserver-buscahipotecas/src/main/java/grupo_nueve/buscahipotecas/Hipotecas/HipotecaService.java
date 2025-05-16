@@ -3,7 +3,6 @@ package grupo_nueve.buscahipotecas.Hipotecas;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
-import grupo_nueve.buscahipotecas.Usuarios.Usuario;
 import lombok.RequiredArgsConstructor;
 
 @Service
