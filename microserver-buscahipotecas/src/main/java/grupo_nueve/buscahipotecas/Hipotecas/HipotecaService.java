@@ -23,6 +23,10 @@ public class HipotecaService {
         return hipotecaRepository.findByIdUsuario(id_usuario);
     }
 
+    public List<Hipoteca> getAllByIdBanco(int id_banco) {
+        return hipotecaRepository.findByBancoId(id_banco);
+    }
+
     public Hipoteca update(int id_hipoteca, Hipoteca hipoteca) {
         if (id_hipoteca <= 0 || hipoteca == null) {
             throw new IllegalArgumentException("Invalid id_hipoteca");
@@ -36,7 +40,6 @@ public class HipotecaService {
         hipotecaToUpdate.setMensualidad(hipoteca.getMensualidad());
         hipotecaToUpdate.setTipo_hipoteca(hipoteca.getTipo_hipoteca());
         hipotecaToUpdate.setFinalidad(hipoteca.getFinalidad());
-        hipotecaToUpdate.setId_entidad(hipoteca.getId_entidad());
 
         return hipotecaRepository.save(hipotecaToUpdate);
     }

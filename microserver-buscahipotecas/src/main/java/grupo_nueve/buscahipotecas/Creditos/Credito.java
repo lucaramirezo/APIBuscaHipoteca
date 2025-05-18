@@ -2,6 +2,7 @@ package grupo_nueve.buscahipotecas.Creditos;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,6 +16,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import grupo_nueve.buscahipotecas.Usuarios.Usuario;
 
@@ -51,7 +54,8 @@ public class Credito {
     } // Se ejecuta antes de persistir el objeto en la base de datos. Se le asigna la fecha y hora actual a create_at.
 
     // Relations
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_usuario", nullable = false)
+    @JsonIgnore // Esto evita que se serialice el usuario en los creditos.
     private Usuario usuario;
 }

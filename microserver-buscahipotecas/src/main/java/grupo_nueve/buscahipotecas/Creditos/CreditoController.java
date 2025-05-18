@@ -20,11 +20,11 @@ public class CreditoController {
     
     private final CreditoService CreditoService; // Inyeccion de dependencia.
 
-    @PostMapping("/create/{id_usuario}")
-    public void create(@PathVariable int id_usuario, @RequestBody Credito credito)
-    {
-        CreditoService.create(id_usuario, credito);
-    }
+    // @PostMapping("/create/{id_usuario}")
+    // public void create(@PathVariable int id_usuario, @RequestBody Credito credito)
+    // {
+    //     CreditoService.create(id_usuario, credito);
+    // }
 
     @GetMapping("/all")
     public List<Credito> all()
@@ -38,7 +38,7 @@ public class CreditoController {
         return CreditoService.getAllByIdUsuario(id_usuario);
     }
 
-    @PostMapping("/update/{id_Credito}")
+    @PostMapping("/update/{id_credito}")
     public ResponseEntity<Credito> updateHipoteca(@PathVariable int id_credito, @RequestBody Credito Credito) {
         if (id_credito <= 0) {
             throw new IllegalArgumentException("Invalid id_hipoteca");

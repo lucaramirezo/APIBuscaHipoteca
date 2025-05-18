@@ -1,10 +1,12 @@
 package grupo_nueve.buscahipotecas.Bancos;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 
 import lombok.AllArgsConstructor;
@@ -13,6 +15,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import grupo_nueve.buscahipotecas.Hipotecas.Hipoteca;
 
 @Data // Anotation Lombok que añade getters y setters.
 @Builder
@@ -44,5 +51,15 @@ public class Banco {
     } // Se ejecuta antes de persistir el objeto en la base de datos. Se le asigna la fecha y hora actual a create_at.
 
 
+    // Relaciones:
+    @OneToMany(mappedBy = "banco", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Hipoteca> hipotecas = Collections.synchronizedList(new ArrayList<>());
+
+    // Helper
+    // Método helper para agregar hipoteca
+    public void addHipoteca(Hipoteca hipoteca) {
+        hipotecas.add(hipoteca);
+        hipoteca.setBanco(this);
+    }
 }
 
