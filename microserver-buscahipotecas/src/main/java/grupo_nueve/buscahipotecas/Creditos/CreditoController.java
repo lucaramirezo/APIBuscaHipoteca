@@ -20,11 +20,11 @@ public class CreditoController {
     
     private final CreditoService CreditoService; // Inyeccion de dependencia.
 
-    @PostMapping("/create/{id_usuario}")
-    public void create(@PathVariable int id_usuario, @RequestBody Credito credito)
-    {
-        CreditoService.create(id_usuario, credito);
-    }
+    // @PostMapping("/create/{id_usuario}")
+    // public void create(@PathVariable int id_usuario, @RequestBody Credito credito)
+    // {
+    //     CreditoService.create(id_usuario, credito);
+    // }
 
     @GetMapping("/all")
     public List<Credito> all()

@@ -3,6 +3,7 @@ package grupo_nueve.buscahipotecas.Usuarios;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import grupo_nueve.buscahipotecas.Creditos.Credito;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -80,7 +81,10 @@ public class UsuarioController {
     }
 
     @PostMapping("/setHipotecas/{id_usuario}")
-    public ResponseEntity<Usuario> setHipotecas(@PathVariable int id_usuario, @RequestBody List<Integer> ids_hipotecas) {
+    public ResponseEntity<Usuario> setHipotecas(
+        @PathVariable int id_usuario,
+        @RequestBody List<Integer> ids_hipotecas
+    ) {
         if (id_usuario <= 0) {
             throw new IllegalArgumentException("Invalid id_usuario");
         }
@@ -88,8 +92,28 @@ public class UsuarioController {
         if (ids_hipotecas == null || ids_hipotecas.isEmpty()) {
             throw new IllegalArgumentException("Invalid ids_hipotecas");
         }
+        // ToDo comprobar que ya exista la relaicón entre id_hipoteca e id_usuario.
+
         Usuario usuario = usuarioService.setHipotecas(id_usuario, ids_hipotecas);
         
         return ResponseEntity.ok(usuario);
+    }
+
+    @PostMapping("/create_creditos/{id_usuario}")
+    public ResponseEntity<Usuario> setCreditos(
+        @PathVariable int id_usuario,
+        @RequestBody List<Credito> creditos
+    ) {
+        if (id_usuario <= 0) {
+            throw new IllegalArgumentException("Invalid id_usuario");
+        }
+
+        if (creditos == null || creditos.isEmpty()) {
+            throw new IllegalArgumentException("Invalid ids_creditos");
+        }
+
+        Usuario usuario = usuarioService.saveCreditos(id_usuario, creditos);
+        
+        return new ResponseEntity<>(usuario, HttpStatus.CREATED);
     }
 }

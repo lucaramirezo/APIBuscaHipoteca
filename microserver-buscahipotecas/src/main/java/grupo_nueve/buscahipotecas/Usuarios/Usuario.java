@@ -14,8 +14,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import grupo_nueve.buscahipotecas.Creditos.Credito;
 import grupo_nueve.buscahipotecas.Hipotecas.Hipoteca;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -105,7 +107,17 @@ public class Usuario implements UserDetails {
         return true;
     }
 
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Credito> creditos = Collections.synchronizedList(new ArrayList<>());
+
+    // Helper
+    // Método helper para agregar credito
+    public void addCredito(Credito credito) {
+        if (creditos == null) {
+            creditos = new ArrayList<>();
+        }
+        credito.setUsuario(this);
+        creditos.add(credito);
+    } // Se añade el credito a la lista de creditos y se establece la relación inversa.
 
 }

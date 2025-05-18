@@ -7,6 +7,8 @@ import java.util.HashSet;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import grupo_nueve.buscahipotecas.Creditos.Credito;
+import grupo_nueve.buscahipotecas.Creditos.CreditoRepository;
 import grupo_nueve.buscahipotecas.Hipotecas.Hipoteca;
 import grupo_nueve.buscahipotecas.Hipotecas.HipotecaRepository;
 import lombok.RequiredArgsConstructor;
@@ -68,12 +70,31 @@ public class UsuarioService {
         if (usuario == null) {
             throw new IllegalArgumentException("Usuario not found");
         }
-
-        // usuario.setHipotecas(new HashSet<>(hipotecas));
+        
         Set<Hipoteca> hipotecas = new HashSet<>(HipotecaRepository.findAllById(ids_hipotecas));
-        // ToDo... Continuar
 
         usuario.setHipotecas(hipotecas);
+
+        return usuarioRepository.save(usuario);
+    }
+
+    public Usuario saveCreditos(int id_usuario, List<Credito> creditos) {
+        if (id_usuario <= 0) {
+            throw new IllegalArgumentException("Invalid id_usuario");
+        }
+        
+        Usuario usuario = usuarioRepository.findById(id_usuario).orElse(null);
+        
+        if (usuario == null) {
+            throw new IllegalArgumentException("Usuario not found");
+        }
+        
+        creditos.forEach((Credito creditos_to_save)-> {
+            creditos_to_save.setUsuario(usuario);
+            usuario.addCredito(creditos_to_save);
+        });
+
+        usuarioRepository.save(usuario);
 
         return usuarioRepository.save(usuario);
     }

@@ -59,10 +59,7 @@ public class BancoService {
         if (banco == null) {
             throw new IllegalArgumentException("Banco not found");
         }
-        // for (Hipoteca hipoteca : hipotecas) {
-        //     hipoteca.setBanco(banco);
-
-        // }
+        
         hipotecas.forEach(banco::addHipoteca);
 
         bancoRepository.save(banco);
