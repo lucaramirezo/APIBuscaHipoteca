@@ -38,7 +38,7 @@ public class CreditoController {
         return CreditoService.getAllByIdUsuario(id_usuario);
     }
 
-    @PostMapping("/update/{id_Credito}")
+    @PostMapping("/update/{id_credito}")
     public ResponseEntity<Credito> updateHipoteca(@PathVariable int id_credito, @RequestBody Credito Credito) {
         if (id_credito <= 0) {
             throw new IllegalArgumentException("Invalid id_hipoteca");

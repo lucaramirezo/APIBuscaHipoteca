@@ -8,7 +8,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import grupo_nueve.buscahipotecas.Creditos.Credito;
-import grupo_nueve.buscahipotecas.Creditos.CreditoRepository;
 import grupo_nueve.buscahipotecas.Hipotecas.Hipoteca;
 import grupo_nueve.buscahipotecas.Hipotecas.HipotecaRepository;
 import lombok.RequiredArgsConstructor;
