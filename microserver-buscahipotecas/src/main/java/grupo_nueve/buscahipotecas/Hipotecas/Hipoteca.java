@@ -3,13 +3,22 @@ package grupo_nueve.buscahipotecas.Hipotecas;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import grupo_nueve.buscahipotecas.Bancos.Banco;
 import grupo_nueve.buscahipotecas.Usuarios.Usuario;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -41,9 +50,6 @@ public class Hipoteca {
     @Column(nullable = false)
     String finalidad;
 
-    @Column(nullable = false)
-    int id_entidad;
-
     // Time status.
     @Column(nullable = false)
     LocalDateTime create_at;
@@ -65,6 +71,11 @@ public class Hipoteca {
     @ManyToMany(mappedBy = "hipotecas")
     private Set<Usuario> usuarios;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id_banco", nullable=false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private Banco banco;
 
 }
 

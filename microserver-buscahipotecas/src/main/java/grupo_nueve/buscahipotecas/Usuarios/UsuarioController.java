@@ -1,11 +1,13 @@
 package grupo_nueve.buscahipotecas.Usuarios;
 
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,9 +27,19 @@ public class UsuarioController {
     // Create se realiza en el auth.
 
     @GetMapping("/all")
-    public List<Usuario> all()
+    public ResponseEntity<List<Usuario>> all()
     {
-        return usuarioService.getAll();
+        // return usuarioService.getAll();
+        try {
+            List<Usuario> usuarios = usuarioService.getAll();
+            return ResponseEntity.ok(usuarios);
+        } catch (Exception e) {
+            throw new ResponseStatusException(
+                HttpStatus.INTERNAL_SERVER_ERROR, 
+                "Error al obtener los usuarios", 
+                e
+            );
+        }
     }
 
     @GetMapping("/get/{id_usuario}")
@@ -35,8 +47,18 @@ public class UsuarioController {
         if (id_usuario <= 0) {
             throw new IllegalArgumentException("Invalid id_usuario");
         }
-        Usuario usuario = usuarioService.getById(id_usuario);
-        return ResponseEntity.ok(usuario);
+        // Usuario usuario = usuarioService.getById(id_usuario);
+        // return ResponseEntity.ok(usuario);
+        try {
+            Usuario usuario = usuarioService.getById(id_usuario);
+            return ResponseEntity.ok(usuario);
+        } catch (Exception e) {
+            throw new ResponseStatusException(
+                HttpStatus.INTERNAL_SERVER_ERROR, 
+                "Error al obtener los usuarios", 
+                e
+            );
+        }
     }
 
     @PostMapping("/update/{id_usuario}")

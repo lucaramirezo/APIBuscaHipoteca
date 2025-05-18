@@ -1,8 +1,10 @@
 package grupo_nueve.buscahipotecas.Hipotecas;
 
 import org.springframework.web.bind.annotation.RestController;
+
 import lombok.RequiredArgsConstructor;
 import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,11 +21,32 @@ public class HipotecaController {
 
     private final HipotecaService hipotecaService; // Inyeccion de dependencia.
 
-    @PostMapping("/create")
-    public void createHipoteca(@RequestBody Hipoteca hipoteca)
-    {
-        hipotecaService.create(hipoteca);
-    }
+    // @PostMapping("/create")
+    // public ResponseEntity<String> createHipoteca(@RequestBody Hipoteca hipoteca)
+    // {
+    //     try {
+    //         Integer id_banco = 1;
+    //         // Banco banco = BancoRepository.findByBancoId(id_banco);
+    //         //     .orElseThrow(() -> new ResourceNotFoundException("Banco no encontrado"));
+    //         // if (hipoteca.id_banco() == null) {
+    //         //     return ResponseEntity.badRequest().body("El id_banco es obligatorio");
+    //         // }
+            
+    //         // // Validación adicional si es necesario
+    //         // if (hipoteca.getId_banco() <= 0) {
+    //         //     return ResponseEntity.badRequest().body("El id_banco debe ser un valor positivo");
+    //         // }
+    //         hipotecaService.create(hipoteca);
+
+    //         return ResponseEntity.ok("Hipoteca creada con id: " + hipoteca.getId_hipoteca());
+    //     } catch (Exception e) {
+    //         throw new ResponseStatusException(
+    //             HttpStatus.INTERNAL_SERVER_ERROR, 
+    //             "Error al obtener los usuarios", 
+    //             e
+    //         );
+    //     }
+    // }
 
     @GetMapping("/all")
     public List<Hipoteca> all()

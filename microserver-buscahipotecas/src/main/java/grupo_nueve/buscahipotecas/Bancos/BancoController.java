@@ -1,10 +1,13 @@
 package grupo_nueve.buscahipotecas.Bancos;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import grupo_nueve.buscahipotecas.Hipotecas.Hipoteca;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,7 +39,7 @@ public class BancoController {
     @PostMapping("/update/{id_banco}")
     public ResponseEntity<Banco> updateHipoteca(@PathVariable int id_banco, @RequestBody Banco banco) {
         if (id_banco <= 0) {
-            throw new IllegalArgumentException("Invalid id_hipoteca");
+            throw new IllegalArgumentException("Invalid id_banco");
         }
         Banco updatedBanco = bancoService.update(id_banco, banco);
         return ResponseEntity.ok(updatedBanco);
@@ -49,5 +52,23 @@ public class BancoController {
         }
         bancoService.delete(id_banco);
         return ResponseEntity.ok("Banco deleted successfully");
+    }
+
+    @PostMapping("/create_hipotecas/{id_banco}")
+    public ResponseEntity<Banco> createHipoteca(
+        @PathVariable(value = "id_banco") Integer id_banco,
+        @RequestBody List<Hipoteca> hipotecas)
+    {
+        if (id_banco <= 0) {
+            throw new IllegalArgumentException("Invalid id_banco");
+        }
+        if (hipotecas == null || hipotecas.isEmpty()) {
+            return ResponseEntity.badRequest().body(null);
+        }
+
+        Banco banco = bancoService.saveHipotecas(id_banco, hipotecas);
+        
+        return new ResponseEntity<>(banco, HttpStatus.CREATED);
+
     }
 }

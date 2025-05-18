@@ -3,6 +3,7 @@ package grupo_nueve.buscahipotecas.Usuarios;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -104,9 +105,7 @@ public class Usuario implements UserDetails {
         return true;
     }
 
-    // @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     @OneToMany(mappedBy = "usuario")
-    private List<Credito> creditos = new ArrayList<>();
-
+    private List<Credito> creditos = Collections.synchronizedList(new ArrayList<>());
 
 }
