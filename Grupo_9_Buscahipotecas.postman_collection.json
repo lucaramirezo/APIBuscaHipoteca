@@ -772,7 +772,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGVqYW5kcm8ucnVpei5wcnVlYmFzMkBnbWFpbC5jb20iLCJpYXQiOjE3NDc1NjMyMzUsImV4cCI6MTc0NzU2NDY3NX0._Yy7KZrIx9VTmKXlcQDP4568FCRL8ZbVCYvaQ8JJ_F4",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGVqYW5kcm8ucnVpei5wcnVlYmFzMkBnbWFpbC5jb20iLCJpYXQiOjE3NDc1NjcyODQsImV4cCI6MTc0NzU2ODcyNH0.ZK-Kcon20wAy0VQUPou_FS_IWjgLyfA7oDVa-NSY6VI",
 							"type": "string"
 						}
 					]
@@ -787,7 +787,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "[\n    {\n        \"cantidad\": 1\n    }\n]",
+					"raw": "[\n    {\n        \"cantidad\": 150\n    }\n]",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -806,6 +806,93 @@
 						"v1",
 						"usuario",
 						"create_creditos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "credito/update/{id_credito}",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGVqYW5kcm8ucnVpei5wcnVlYmFzMkBnbWFpbC5jb20iLCJpYXQiOjE3NDc1NzAyOTEsImV4cCI6MTc0NzU3MTczMX0.7quGmjNcV2Ybm0lqd1fVCwjqSVGgiNKHSvTWe6wba4k",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cantidad\": 250\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/buscahipotecas/v1/credito/update/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"buscahipotecas",
+						"v1",
+						"credito",
+						"update",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "credito/delete/{id_credito}",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGVqYW5kcm8ucnVpei5wcnVlYmFzMkBnbWFpbC5jb20iLCJpYXQiOjE3NDc1NzAyOTEsImV4cCI6MTc0NzU3MTczMX0.7quGmjNcV2Ybm0lqd1fVCwjqSVGgiNKHSvTWe6wba4k",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/buscahipotecas/v1/credito/delete/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"buscahipotecas",
+						"v1",
+						"credito",
+						"delete",
 						"1"
 					]
 				}
