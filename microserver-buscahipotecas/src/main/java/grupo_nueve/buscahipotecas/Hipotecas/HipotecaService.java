@@ -1,6 +1,7 @@
 package grupo_nueve.buscahipotecas.Hipotecas;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -14,7 +15,6 @@ import grupo_nueve.buscahipotecas.Bancos.Banco;
 import grupo_nueve.buscahipotecas.Bancos.BancoRepository;
 
 import org.springframework.http.MediaType;
-import reactor.core.publisher.Mono;
 
 @Service
 @RequiredArgsConstructor // Inyeccion de dependencia.
@@ -91,7 +91,9 @@ public class HipotecaService {
                 hipoteca.setCreate_at(LocalDateTime.now());
                 hipoteca.setUpdated_at(LocalDateTime.now());
 
-                List<Hipoteca> hipotecas = List.of(hipoteca);
+                // List<Hipoteca> hipotecas = List.of(hipoteca);
+                List<Hipoteca> hipotecas = new ArrayList<>();
+                hipotecas.add(hipoteca);
                 
                 // ⚠️ Asignar banco si es requerido y hay lógica
                 // hipoteca.setBanco(bancoRepository.findById(1).orElseThrow());
