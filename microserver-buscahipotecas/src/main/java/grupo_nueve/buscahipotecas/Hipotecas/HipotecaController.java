@@ -50,4 +50,13 @@ public class HipotecaController {
         hipotecaService.delete(id_hipoteca);
         return ResponseEntity.ok("Hipoteca deleted successfully");
     }
+
+    @GetMapping("/get_info_from_magi_loop")
+    public ResponseEntity<String> get_info_from_magi_loop()
+    {
+        hipotecaService.getInfoFromMagiLoop();
+        return ResponseEntity.ok("Th database has filled with data from the Magi loop.");
+    }
+
+    
 }
