@@ -75,7 +75,7 @@ public class HipotecaService {
         HipotecaResponse response = webClient.post()
                 .uri("/api/loop/5aea7ecc-e8ef-45f3-861d-6877106adc6e/run")
                 .contentType(MediaType.APPLICATION_JSON)
-                .bodyValue(Map.of("pagina", 1))
+                .bodyValue(Map.of("page", 1))
                 .retrieve()
                 .bodyToMono(HipotecaResponse.class)
                 .block();
